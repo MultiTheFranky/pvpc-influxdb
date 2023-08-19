@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build the Docker image
+        run: docker build . --tag "pvpc-influxdb:$(date +%s)"
+
+  docker-compose:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Copy .env file
+        run: cp .env.example .env
+      - name: Build the Docker image
+        run: docker compose build
