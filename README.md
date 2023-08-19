@@ -22,6 +22,7 @@ The configuration is done through environment variables. The following variables
 - Docker Compose 1.29+
 
 ### Usage
+Copy the `docker-compose.example.yml` file to `docker-compose.yml` and fill the required variables.
 ```bash
 docker-compose up -d
 ```
