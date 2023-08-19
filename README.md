@@ -13,7 +13,7 @@ The configuration is done through environment variables. The following variables
 | `INFLUXDB_TOKEN` | Influx token | |
 | `INFLUXDB_ORG` | Influx organization | |
 | `INFLUXDB_BUCKET` | Influx bucket | |
-| `CRON` | Cron expression to run the script | `0 0 3 * *` |
+| `CRON` | Cron expression to run the script | `5 0 * * *` |
 
 ## Using docker
 
