@@ -1,0 +1,32 @@
+{
+    "name": "pvpc-influxdb",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/MultiTheFranky/pvpc-influxdb",
+    "author": "Franky",
+    "license": "MIT",
+    "private": false,
+    "engines": {
+        "node": ">=16.0.0",
+        "npm": ">=7.0.0",
+        "yarn": ">=1.22.0"
+    },
+    "scripts": {
+        "start:local": "env-cmd ts-node src/index.ts",
+        "build": "tsc",
+        "start": "node dist/index.js"
+    },
+    "dependencies": {
+        "@influxdata/influxdb-client": "^1.33.2",
+        "axios": "^1.4.0",
+        "cron": "^2.4.1"
+    },
+    "devDependencies": {
+        "@types/luxon": "^3.3.1",
+        "@types/node": "^20.5.1",
+        "env-cmd": "^10.1.0",
+        "prettier": "^3.0.2",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.1.6"
+    }
+}

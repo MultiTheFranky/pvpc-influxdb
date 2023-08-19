@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  pvpc-influxdb:
+    image: multithefranky/pvpc-influxdb
+    container_name: pvpc-influxdb
+    environment:
+      - INFLUXDB_URL="http://influxdb:8086"
+      - INFLUXDB_TOKEN="my-token"
+      - INFLUXDB_ORG="my-org"
+      - INFLUXDB_BUCKET="my-bucket"
+      - CRON="0 0 5 * *" # 5:00 every day
+    restart: unless-stopped
