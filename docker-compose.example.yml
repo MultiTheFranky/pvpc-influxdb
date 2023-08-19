@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   pvpc-influxdb:
-    image: multithefranky/pvpc-influxdb
+    image: ghcr.io/multithefranky/pvpc-influxdb
     container_name: pvpc-influxdb
     environment:
       - INFLUXDB_URL="http://influxdb:8086"
