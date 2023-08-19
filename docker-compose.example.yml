@@ -8,5 +8,5 @@ services:
       - INFLUXDB_TOKEN="my-token"
       - INFLUXDB_ORG="my-org"
       - INFLUXDB_BUCKET="my-bucket"
-      - CRON="5 0 * * *" # 0:05 every day
+      - CRON="0 5 0 * * *" # 0:05 every day
     restart: unless-stopped
