@@ -33,14 +33,14 @@ type PVPC = {
 
 // Function to get PVPC prices for a day
 export const getDayPVPCPrices = async (date: Date): Promise<PVPC[]> => {
-  logger.info("Getting PVPC prices for", date);
+  logger.info(`Getting PVPC prices for ${date}`);
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
   const url = `${PVPC_URL}start_date=${year}-${month}-${day}T00:00&end_date=${year}-${month}-${day}T23:59&time_trunc=hour`;
   const response = await axios.get(url);
   const prices = response.data.included[0].attributes.values;
-  logger.info("Got", prices.length, "prices");
+  logger.info(`Got ${prices.length} prices`);
   return prices.map((price: any) => ({
     date: new Date(price.datetime),
     price: price.value,
@@ -49,7 +49,7 @@ export const getDayPVPCPrices = async (date: Date): Promise<PVPC[]> => {
 
 // Function to get PVPC price for a hour
 export const getHourPVPCPrice = async (date: Date): Promise<number> => {
-  logger.info("Getting PVPC price for", date);
+  logger.info(`Getting PVPC price for ${date}`);
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
@@ -57,7 +57,7 @@ export const getHourPVPCPrice = async (date: Date): Promise<number> => {
   const url = `${PVPC_URL}start_date=${year}-${month}-${day}T${hour}:00&end_date=${year}-${month}-${day}T${hour}:59&time_trunc=hour`;
   const response = await axios.get(url);
   const prices = response.data.included[0].attributes.values;
-  logger.info("Got", prices.length, "prices");
+  logger.info(`Got ${prices.length} prices`);
   return prices[0].value;
 };
 
@@ -75,7 +75,7 @@ export const sentPricesToInflux = async (prices: PVPC[]) => {
     writeApi.writePoint(point);
   });
   await writeApi.close();
-  logger.info("Sent", prices.length, "prices to InfluxDB");
+  logger.info(`Sent ${prices.length} prices to InfluxDB`);
 };
 
 type Consumer = {
@@ -105,7 +105,7 @@ export const getConsume = async (consumer: Consumer): Promise<number> => {
   const query = `from(bucket: "${consumer.bucket}")
     |> range(start: -1h, stop: now())
     |> filter(fn: (r) => ${consumer.filter})`;
-  logger.info("Query: \n", query);
+  logger.info(`Querying InfluxDB: ${query}`);
 
   const result: number[] = await queryApi.collectRows(
     query,
