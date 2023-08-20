@@ -14,6 +14,11 @@ The configuration is done through environment variables. The following variables
 | `INFLUXDB_ORG` | Influx organization | |
 | `INFLUXDB_BUCKET` | Influx bucket | |
 | `CRON` | Cron expression to run the script | `0 5 0 * * *` |
+| `CONSUMERS` | Elements that read the Watt usage. The format is: {bucket}:{filter}. For example: `ups:r._measurement == "ups" and r.host == "pve3" and r.service == "EllipsePRO" and r._field == "ups.realpower""` <b> Remember to add "" at the end of the filter </b><br />More info: https://docs.influxdata.com/flux/v0.x/stdlib/universe/filter/| |
+
+### Consumers
+The consumers functionality try to get the watt usage getting the information from Influx and calculates the price per hour. This will create a measurement called `consumption` with the following field:
+- `price`: Price per hour
 
 ## Using docker
 

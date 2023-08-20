@@ -1,32 +1,51 @@
 {
-    "name": "pvpc-influxdb",
-    "version": "1.0.0",
-    "main": "index.js",
-    "repository": "https://github.com/MultiTheFranky/pvpc-influxdb",
-    "author": "Franky",
-    "license": "MIT",
-    "private": false,
-    "engines": {
-        "node": ">=16.0.0",
-        "npm": ">=7.0.0",
-        "yarn": ">=1.22.0"
-    },
-    "scripts": {
-        "start:local": "env-cmd ts-node src/index.ts",
-        "build": "tsc",
-        "start": "node dist/index.js"
-    },
-    "dependencies": {
-        "@influxdata/influxdb-client": "^1.33.2",
-        "axios": "^1.4.0",
-        "cron": "^2.4.1"
-    },
-    "devDependencies": {
-        "@types/luxon": "^3.3.1",
-        "@types/node": "^20.5.1",
-        "env-cmd": "^10.1.0",
-        "prettier": "^3.0.2",
-        "ts-node": "^10.9.1",
-        "typescript": "^5.1.6"
-    }
+  "name": "pvpc-influxdb",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "repository": "https://github.com/MultiTheFranky/pvpc-influxdb",
+  "author": "Franky",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0",
+    "yarn": ">=1.22.0"
+  },
+  "scripts": {
+    "postinstall": "husky install",
+    "precommit": "yarn lint && yarn prettier",
+    "prepush": "yarn build",
+    "lint": "eslint src --ext .ts,.tsx",
+    "prettier": "prettier --write \"**/*.{ts,tsx}\"",
+    "start:local": "env-cmd ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@influxdata/influxdb-client": "^1.33.2",
+    "axios": "^1.4.0",
+    "cron": "^2.4.1",
+    "winston": "^3.10.0",
+    "winston-daily-rotate-file": "^4.7.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.1.2",
+    "@commitlint/config-conventional": "16.2.1",
+    "@types/luxon": "^3.3.1",
+    "@types/node": "^20.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.47.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "5.0.0",
+    "eslint-plugin-unicorn": "^46.0.0",
+    "husky": "^8.0.3",
+    "prettier": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
 }
