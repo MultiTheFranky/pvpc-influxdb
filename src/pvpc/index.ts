@@ -84,7 +84,7 @@ type Consumer = {
 };
 
 // Function to get consumers
-const consumersEnv = process.env.CONSUMERS; // name1:bucket1:filter1,name2:bucket2:filter2,...
+const consumersEnv = process.env.CONSUMERS; // bucket1:filter1,bucket2:filter2,...
 // Function to get consumers
 export const getConsumers = (): Consumer[] => {
   if (!consumersEnv) return [];
