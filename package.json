@@ -24,7 +24,7 @@
   "dependencies": {
     "@influxdata/influxdb-client": "^1.33.2",
     "axios": "^1.5.1",
-    "cron": "^2.4.3",
+    "cron": "^3.0.0",
     "winston": "^3.10.0",
     "winston-daily-rotate-file": "^4.7.1"
   },
