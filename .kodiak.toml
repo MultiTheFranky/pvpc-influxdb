@@ -15,6 +15,11 @@ version = 1
 # this requirement via `merge.require_automerge_label`.
 automerge_label = "automerge" # default: "automerge"
 
+[merge.automerge_dependencies]
+# auto merge all PRs opened by "dependabot" that are "minor" or "patch" version upgrades. "major" version upgrades will be ignored.
+versions = ["minor", "patch"]
+usernames = ["dependabot"]
+
 # Require that the automerge label (`merge.automerge_label`) be set for Kodiak
 # to merge a PR.
 #
@@ -75,7 +80,8 @@ optimistic_updates = false # default: true
 # status check is incomplete when a PR is being merged, Kodiak will skip the PR.
 # Use this option for status checks that run indefinitely, like deploy jobs or
 # the WIP GitHub App.
-dont_wait_on_status_checks = [] # default: [], options: list of check names (e.g. ["ci/circleci: lint_api"])
+dont_wait_on_status_checks = [
+] # default: [], options: list of check names (e.g. ["ci/circleci: lint_api"])
 
 # DEPRECATED
 #
