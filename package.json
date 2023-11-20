@@ -32,7 +32,7 @@
     "@commitlint/cli": "17.8.0",
     "@commitlint/config-conventional": "17.8.0",
     "@types/luxon": "^3.3.4",
-    "@types/node": "^20.9.0",
+    "@types/node": "^20.9.2",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
     "env-cmd": "^10.1.0",
